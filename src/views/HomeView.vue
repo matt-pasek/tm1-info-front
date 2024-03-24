@@ -6,15 +6,60 @@
     <h2 class="text-xl">w dniu {{ substitutions.date }}</h2>
 
     <div ref="dynamicGrid" class="mt-5 grid grid-rows-10 gap-2 h-[80vh]">
-      <div class="col-start-1 row-start-2">1. 8:00-8:45</div>
-      <div class="col-start-1 row-start-3">2. 8:50-9:35</div>
-      <div class="col-start-1 row-start-4">3. 9:40-10:25</div>
-      <div class="col-start-1 row-start-5">4. 10:30-11:15</div>
-      <div class="col-start-1 row-start-6">5. 11:35-12:20</div>
-      <div class="col-start-1 row-start-7">6. 12:40-13:25</div>
-      <div class="col-start-1 row-start-8">7. 13:30-14:15</div>
-      <div class="col-start-1 row-start-9">8. 14:20-15:05</div>
-      <div class="col-start-1 row-start-10">9. 15:10-15:55</div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-2"
+      >
+        <p>1.</p>
+        <p>8:00-8:45</p>
+      </div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-3"
+      >
+        <p>2.</p>
+        <p>8:50-9:35</p>
+      </div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-4"
+      >
+        <p>3.</p>
+        <p>9:40-10:25</p>
+      </div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-5"
+      >
+        <p>4.</p>
+        <p>10:30-11:15</p>
+      </div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-6"
+      >
+        <p>5.</p>
+        <p>11:35-12:20</p>
+      </div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-7"
+      >
+        <p>6.</p>
+        <p>12:40-13:25</p>
+      </div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-8"
+      >
+        <p>7.</p>
+        <p>13:30-14:15</p>
+      </div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-9"
+      >
+        <p>8.</p>
+        <p>14:20-15:05</p>
+      </div>
+      <div
+        class="flex flex-col gap-1 items-center justify-center text-lg font-bold col-start-1 row-start-10"
+      >
+        <p>9.</p>
+        <p>15:10-15:55</p>
+      </div>
       <SubstituteCards
         v-for="(substitution, index) in substitutions.substitutions"
         :key="substitution.absentTeacher"
