@@ -1,31 +1,33 @@
 <template>
   <div
-    class="flex flex-col p-4 rounded-lg bg-white text-neutral-700 shadow-white/20 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]"
+    ref="card"
+    class="flex flex-col text-neutral-700 bg-white font-medium rounded-xl items-center justify-center"
+    :class="sub.classroom === '' ? 'bg-red-300' : 'bg-white'"
   >
-    <h3 class="text-lg font-medium">{{ substitution.absentTeacher }}</h3>
-    <div class="flex flex-col gap-3">
-      <div
-        class="flex items-center text-center gap-1"
-        v-for="sub in substitution.substitutions"
-        :key="sub.lessonNumber"
-      >
-        <div class="flex text-left gap-1 items-center">
-          <p class="font-medium text-xl">{{ sub.lessonNumber }}</p>
-          <p class="text-nowrap text-sm">{{ sub.newTeacher }}</p>
-        </div>
-        <div class="flex gap-1 items-end">
-          <p>{{ sub.what }}</p>
-          <p class="text-nowrap text-sm">{{ sub.classroom ? 'sala ' + sub.classroom : '' }}</p>
-        </div>
-
-        <p>{{ sub.className }}</p>
-      </div>
-    </div>
+    <span>{{ newSubject }} {{ sub.newTeacher ? `- ${sub.newTeacher}` : '' }}</span>
+    <span class="text-sm">{{ sub.className }}</span>
+    <span> {{ sub.classroom ? `Sala ${sub.classroom}` : '' }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { TeacherSubstitution } from '@/models/substitutions.model';
+import type { Substitution } from '@/models/substitutions.model';
+import { nextTick, onMounted, ref } from 'vue';
 
-defineProps<{ substitution: TeacherSubstitution }>();
+const card = ref<HTMLDivElement | null>(null);
+const newSubject = ref<string>('');
+
+const props = defineProps<{
+  sub: Substitution;
+  column: number;
+}>();
+
+onMounted(async () => {
+  newSubject.value =
+    props.sub.what.length > 15 ? props.sub.what.slice(0, 10) + '...' : props.sub.what;
+  await nextTick(() => {
+    card.value!.style.gridColumnStart = String(props.column);
+    card.value!.style.gridRowStart = String(parseInt(props.sub.lessonNumber) + 1);
+  });
+});
 </script>
