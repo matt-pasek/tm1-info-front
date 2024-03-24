@@ -1,6 +1,6 @@
 <template>
   <main
-    class="w-full min-h-screen flex flex-col items-center justify-center p-10 bg-[url('@/assets/cherryBg.webp')]"
+    class="w-full min-h-screen flex flex-col items-center justify-center p-10 bg-[#1f1f1f] text-white"
   >
     <h1 class="font-semibold text-4xl">Zastępstwa</h1>
     <h2 class="text-xl">w dniu {{ substitutions.date }}</h2>

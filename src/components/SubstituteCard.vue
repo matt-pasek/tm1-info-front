@@ -1,11 +1,11 @@
 <template>
   <div
-    class="flex flex-col p-3 rounded-xl bg-black/10 backdrop-blur shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]"
+    class="flex flex-col p-4 rounded-lg bg-white text-neutral-700 shadow-white/20 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]"
   >
     <h3 class="text-lg font-medium">{{ substitution.absentTeacher }}</h3>
-    <div class="flex gap-3">
+    <div class="flex flex-col gap-3">
       <div
-        class="flex flex-col items-center text-center gap-1"
+        class="flex items-center text-center gap-1"
         v-for="sub in substitution.substitutions"
         :key="sub.lessonNumber"
       >
